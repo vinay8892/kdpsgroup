@@ -52,24 +52,62 @@
 		left: 10px;
 		background-color: #25d366;
 		}
-		
 
+.m-banner{
+  display: none !important;
+}
+
+@media only screen and (max-width: 600px){
+  .d-banner{
+    display: none !important;
+  }
+  .m-banner{
+    display: block !important;
+  }
+}
+ .slide {
+ display: none;
+ }
+ 
+ /* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.mySlides {
+  width: 100%;
+  height: 100%;
+  background: #bbb;
+  color:#ddd;
+  text-align: center;
+  line-height: 320px;
+  font-size: 640px;
+  }
+  
   </style>
   
   </head>
   <body>
+
       <div class="row">
-	  <div id="sp-logo" class="col-xs-8 col-sm-2 col-md-2">
-		
-	  </div>
-	  <div id="sp-menu" class="col-xs-4 col-sm-10 col-md-10">
+
+	  <div id="sp-menu" class="col-xs-12 col-sm-12 col-md-12">
+	      
 		  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+			
 			<div class="container">
 			  
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			  </button>
-
+              <img style="height:90px;width:90px;float: left;" src="images/logo.png" alt="K.D.Public School">
 			  <div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 				  <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
@@ -78,62 +116,71 @@
 				  <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 				  <li class="nav-item cta"><a href="contact.html" class="nav-link" data-toggle="modal" data-target="#modalRequest"><span>Make an Enquiry</span></a></li>
 				</ul>
+				
+				<ul class="navbar-nav navbar-right">
+				     &nbsp;&nbsp;&nbsp;&nbsp;
+					<li><a href="#"><span style="color:blue;font-size:20px;"><i class="fa fa-phone"></i></span><span style="color:red;font-size:20px;"><B>+91 9792866866</B></span></a></li>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<li><span style="color:yellow;font-size:20px;"><i class="fa fa-envelope"></i></span> <a
+                                         href="mailto:info@kdpsgroup.com"><span style="color:blue;font-size:20px;font-weight:Bold;">info@kdpsgroup.com</span></a>
+                    </li>
+				</ul>
 			  </div>
 			</div>
 		  </nav>
 		  </div>
 	  </div>
     <!-- END nav -->
-    
+	
+		<div class="slideshow">
+			<div class="mySlides">
+				<img class="d-banner" src="images/1.jpg"
+					 alt="K.D.Public School"
+					 style="width: 100%">
+				<img class="m-banner" src="images/1.jpg"
+					 alt="K.D.Public School"
+					 style="width: 100%">
+			</div>
+			
+			<div class="mySlides">
+				<img class="d-banner" src="images/2.jpg"
+					 alt="K.D.Public School"
+					 style="width: 100%">
+				<img class="m-banner" src="images/2.jpg"
+					 alt="K.D.Public School"
+					 style="width: 100%">
+			</div>
+
+			<div class="mySlides">
+				<img class="d-banner" src="images/3.jpeg"
+					 alt="K.D.Public School"
+					 style="width: 100%">
+				<img class="m-banner" src="images/3.jpeg"
+					 alt="K.D.Public School"
+					 style="width: 100%">
+			</div>
+			<div class="mySlides">
+				<img class="d-banner" src="images/3.jpg"
+					 alt="K.D.Public School"
+					 style="width: 100%">
+				<img class="m-banner" src="images/3.jpg"
+					 alt="K.D.Public School"
+					 style="width: 100%">
+			</div>
+		
+		</div>
+	
+	<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+
 	<a class="whats-app" target="_blank" href="https://api.whatsapp.com/send/?phone=919792866866&text&lang=En&app_absent=0"><i class="fa fa-whatsapp" style="font-size:50px;color:white"></i></a>
 	
-    <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image: url('images/1.jpg');">
-        <div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text align-items-center" data-scrollax-parent="true">
-            <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-              <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">K.D.Public School Jamon</h1>
-              <p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">an English Medium, Co-Educational School which is aimed to produce greater tallents for the country.</p>
-              <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="#" class="btn btn-primary px-4 py-3">Make an Enquiry</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="slider-item" style="background-image: url('images/2.jpg');">
-        <div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text align-items-center" data-scrollax-parent="true">
-            <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-              <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Best English Medium School</h1>
-              <p class="mb-4">K.D.Public School is an educational milestone created,carved and being nurtured by the most acclaimed academicians.</p>
-              <p><a href="#" class="btn btn-primary px-4 py-3">Make an Enquiry</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-	  <div class="slider-item" style="background-image: url('images/3.jpeg');">
-        <div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text align-items-center" data-scrollax-parent="true">
-            <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-
-            </div>
-          </div>
-        </div>
-      </div>
-	 <div class="slider-item" style="background-image: url('images/3.jpg');">
-        <div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text align-items-center" data-scrollax-parent="true">
-            <div class="col-md-6 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="ftco-intro">
     	<div class="container">
@@ -401,7 +448,7 @@ and success</p>
 
 
    <!--<div id="footer"></div> -->
-	    <footer class="ftco-footer ftco-bg-dark ftco-section">
+	<footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-3">
@@ -416,6 +463,18 @@ and success</p>
 			  <li class="ftco-animate"><a href="#"><span class="icon-linkedin"></span></a></li>
             </ul>
           </div>
+		  
+		  <div class="col-md-4 pr-md-4">
+				<!-- place for logo -->
+				 
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2"></h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block"><img style="height:250px;width:250px;float: center;" src="images/logo.png" alt="K.D. Public School"></a></li>
+              </ul>
+            </div>
+		  </div>
+		  
           <div class="col-md-2">
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Quick Links</h2>
@@ -426,9 +485,7 @@ and success</p>
               </ul>
             </div>
           </div>
-          <div class="col-md-4 pr-md-4">
-				<!-- place for logo -->
-          </div>
+
           <div class="col-md-3">
             <div class="ftco-footer-widget mb-4">
             	<h2 class="ftco-heading-2">Office</h2>
@@ -527,6 +584,40 @@ and success</p>
   
 //}); 
     </script>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    //dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  //dots[slideIndex-1].className += " active";
+}
+
+setInterval(function() {
+    plusSlides(1);
+}, 5000);
+
+</script>
 		
   </body>
 </html>

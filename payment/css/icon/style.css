@@ -1,0 +1,171 @@
+@font-face {
+  font-family: 'ews';
+  src:  url('fonts/ews.eot?816doz');
+  src:  url('fonts/ews.eot?816doz#iefix') format('embedded-opentype'),
+    url('fonts/ews.ttf?816doz') format('truetype'),
+    url('fonts/ews.woff?816doz') format('woff'),
+    url('fonts/ews.svg?816doz#ews') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="i-"], [class*=" i-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'ews' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.i-e-calendar:before {
+  content: "\e91d";
+}
+.i-e-shield:before {
+  content: "\e91a";
+}
+.i-e-gear:before {
+  content: "\e91c";
+}
+.i-angle-down:before {
+  content: "\e900";
+}
+.i-angle-down-f:before {
+  content: "\e901";
+}
+.i-angle-left:before {
+  content: "\e902";
+}
+.i-angle-left-f:before {
+  content: "\e903";
+}
+.i-angle-right:before {
+  content: "\e904";
+}
+.i-angle-right-f:before {
+  content: "\e905";
+}
+.i-angle-up:before {
+  content: "\e906";
+}
+.i-angle-up-f:before {
+  content: "\e907";
+}
+.i-call:before {
+  content: "\e908";
+}
+.i-edit:before {
+  content: "\e90a";
+}
+.i-email:before {
+  content: "\e90b";
+}
+.i-facebook:before {
+  content: "\e90c";
+}
+.i-heart:before {
+  content: "\e90d";
+}
+.i-instagram:before {
+  content: "\e90e";
+}
+.i-linkedin:before {
+  content: "\e90f";
+}
+.i-minus:before {
+  content: "\e910";
+}
+.i-plus:before {
+  content: "\e911";
+}
+.i-searc:before {
+  content: "\e912";
+}
+.i-send:before {
+  content: "\e913";
+}
+.i-tag:before {
+  content: "\e914";
+}
+.i-twitter:before {
+  content: "\e915";
+}
+.i-user:before {
+  content: "\e916";
+}
+.i-whatsapp:before {
+  content: "\e917";
+}
+.i-youtube:before {
+  content: "\e918";
+}
+.i-image:before {
+  content: "\e919";
+}
+.i-mic:before {
+  content: "\e922";
+}
+.i-price-tag:before {
+  content: "\e935";
+}
+.i-cart:before {
+  content: "\e93a";
+}
+.i-location2:before {
+  content: "\e948";
+}
+.i-calendar:before {
+  content: "\e953";
+}
+.i-quotes-left:before {
+  content: "\e977";
+}
+.i-quotes-right:before {
+  content: "\e978";
+}
+.i-key:before {
+  content: "\e98d";
+}
+.i-lock:before {
+  content: "\e98f";
+}
+.i-download3:before {
+  content: "\e9c7";
+}
+.i-attachment:before {
+  content: "\e9cd";
+}
+.i-sun:before {
+  content: "\e9d4";
+}
+.i-brightness-contrast:before {
+  content: "\e9d6";
+}
+.i-star-empty:before {
+  content: "\e9d7";
+}
+.i-star-half:before {
+  content: "\e9d8";
+}
+.i-star-full:before {
+  content: "\e9d9";
+}
+.i-sort-amount-asc:before {
+  content: "\ea4c";
+}
+.i-sort-amount-desc:before {
+  content: "\ea4d";
+}
+.i-filter:before {
+  content: "\ea5b";
+}
+.i-file-pdf:before {
+  content: "\eadf";
+}

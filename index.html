@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  
+    <script>
+		let enableFlashMessage = "true";
+		let messageHeading="Happy New Year";
+		let messageBody="https://storage.googleapis.com/kdpsgroup-2c331.appspot.com/Images/flashMessageImage.jpg";
+	</script>
     <title>K.D.Public School</title>
 	<link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
     <meta charset="utf-8">
@@ -582,7 +588,7 @@ and success</p>
       <div class="modal-content">
         <div style="background-color:Tomato;" class="modal-header" >
           <!--<h5 class="modal-title" id="modalRequestLabel"><span style="color:blue;font-size:25px;font-weight:bold">Winter Vacation Notice</span></h5>-->
-		  <h5 class="modal-title" id="modalRequestLabel"><span style="color:blue;font-size:25px;font-weight:bold">Best Wishes</span></h5>
+		  <h5 class="modal-title" id="modalRequestLabel"><span id="flashMessageHeading" style="color:blue;font-size:25px;font-weight:bold">Best Wishes</span></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -591,7 +597,7 @@ and success</p>
 		    <div class="row">
 		    <div class="col-lg-12 col-md-12 col-sm-12">
 			<!--<img style="max-width: 100%;height: auto;" src="images/WinterVacation.jpg" class="img-responsive">-->
-			<img style="max-width: 100%;height: auto;" src="images/HappyNewYearMessage.jpg" class="img-responsive">
+			<img id="flashMessageBody" style="max-width: 100%;height: auto;" src="images/loc.png" class="img-responsive">
 			</div>
 			</div>
         </div>
@@ -655,7 +661,29 @@ setInterval(function() {
 }, 5000);
 
 setTimeout(function() {
-$("#modalFlashMessage").modal();
+		$.ajax({
+		url: 'https://storage.googleapis.com/kdpsgroup-2c331.appspot.com/Config/KDPSWebsiteConfig.json',
+		method: 'GET',
+		success: function (data) {
+			  enableFlashMessage=data.enableFlashMessage;
+			  messageHeading=data.messageHeading;
+			  messageBody=data.messageBody;
+			  if (enableFlashMessage=="true") 
+			  {
+				document.getElementById("flashMessageHeading").innerHTML = messageHeading;
+				document.getElementById("flashMessageBody").src = messageBody;
+				$("#modalFlashMessage").modal();
+			  }	
+              else
+			  {
+                 console.log('enableFlashMessage is turned off');
+			  }			  
+		},
+		error: function () {
+		   console.log('Error while calling Config service');
+		}
+
+	});
 }, 10000);
 			   
 </script>

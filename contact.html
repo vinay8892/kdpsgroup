@@ -275,7 +275,7 @@
 			var smobile=$('#cntmobile').val()
 			var semail=$('#cntemail').val() 
 			var ssubject=$('#cntsubject').val()
-			var smessage='<B>Contact details of the person sending enquiry:<B><BR/>' 
+			var smessage='<B>Contact details of the person sending enquiry:</B><BR/>' 
 			smessage=smessage + 'name: ' + sname + '<BR/> mobile: ' + smobile + '<BR/> email: ' + semail + '<Br/> His enquiry message: ' +    $('#cntmessage').val()
             $.ajax({
                 url: 'https://tgroz9ryhi.execute-api.ap-south-1.amazonaws.com/Prod/api/ContactData',
@@ -291,15 +291,25 @@
                 },
                 success: function () {
                       window.alert('Thank you for writing to us. Soon we will call you to resolve your query');
+					  ClearContactTexts();
                 },
                 error: function () {
                    window.alert('Thank you for writing to us. Soon we will call you to resolve your query');
+				   ClearContactTexts();
                 }
 
             });
 			return false;
 	      });
-		  
+
+function ClearContactTexts()
+{
+	  $('#cntname').val('');
+	  $('#cntmobile').val('');
+	  $('#cntemail').val('');
+	  $('#cntsubject').val('');
+	  $('#cntmessage').val('');
+}		  
 </script>   
   </body>
 </html>

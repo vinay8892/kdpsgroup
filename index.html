@@ -3,9 +3,11 @@
   <head>
   
     <script>
-		let enableFlashMessage = "true";
+		let enableFlashMessage = "false";
 		let messageHeading="Happy New Year";
 		let messageBody="https://storage.googleapis.com/kdpsgroup-2c331.appspot.com/Images/flashMessageImage.jpg";
+		let enableAdmissionPOPUP="false";
+		let admissionMessage="";
 	</script>
     <title>K.D.Public School</title>
 	<link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
@@ -96,6 +98,26 @@
   line-height: 320px;
   font-size: 640px;
   }
+
+#pageloader
+{
+  background: rgba(255, 255, 255, 0.9);
+  display: none;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 9999999;
+  top: 0;
+}
+
+#pageloader img
+{
+  left: 50%;
+  margin-left: -32px;
+  margin-top: -32px;
+  position: absolute;
+  top: 50%;
+}
   
   </style>
   
@@ -532,49 +554,60 @@ and success</p>
 	
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
+  
+  <div id="pageloader">
+    <img src="images/loading.gif" alt="processing..."/>
+  </div>
   <!-- Modal -->
   <div class="modal fade" id="modalRequest" tabindex="-1" role="dialog" aria-labelledby="modalRequestLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalRequestLabel">Make an Enquiry</h5>
+          <h2 class="modal-title" style="color:blue;" id="modalRequestLabel">Admission Enquiry</h2>	  
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+		  <h5 id="admissionMessage" style="color:orange;">Admission is open for 2022-23. Please fill below form to get call back to answer your queries</h5>
           <form action="#">
             <div class="form-group">
               <!-- <label for="Appointment_name" class="text-black">Full Name</label> -->
-              <input type="text" class="form-control" id="Appointment_name" placeholder="Full Name">
+              <input type="text" class="form-control" id="enquiry_name" placeholder="Full Name">
             </div>
             <div class="form-group">
               <!-- <label for="Appointment_email" class="text-black">Email</label> -->
-              <input type="text" class="form-control" id="Appointment_email" placeholder="Email">
+              <input type="text" class="form-control" id="enquiry_mobile" placeholder="Contact No">
             </div>
+			<div class="form-group">
+              <!-- <label for="Appointment_email" class="text-black">Email</label> -->
+              <input type="text" class="form-control" id="enquiry_class" placeholder="class">
+            </div>
+			
+			<div class="form-group">
+              <!-- <label for="Appointment_message" class="text-black">Message</label> -->
+              <textarea name="" id="enquiry_address" class="form-control" cols="30" rows="3" placeholder="Address"></textarea>
+            </div>
+			
+			<!--
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <!-- <label for="Appointment_date" class="text-black">Date</label> -->
+                  <label for="Appointment_date" class="text-black">Date</label> 
                   <input type="text" class="form-control Appointment_date" placeholder="Date">
                 </div>    
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <!-- <label for="Appointment_time" class="text-black">Time</label> -->
+                  <label for="Appointment_time" class="text-black">Time</label> 
                   <input type="text" class="form-control Appointment_time" placeholder="Time">
                 </div>
               </div>
             </div>
-            
+            -->
 
             <div class="form-group">
-              <!-- <label for="Appointment_message" class="text-black">Message</label> -->
-              <textarea name="" id="Appointment_message" class="form-control" cols="30" rows="10" placeholder="Message"></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Make an Enquiry" class="btn btn-primary">
+              <input type="submit" id="submitEnquiry" value="Make an Enquiry" class="btn btn-primary">
             </div>
           </form>
         </div>
@@ -663,19 +696,28 @@ setInterval(function() {
 setTimeout(function() {
 		$.ajax({
 		url: 'https://storage.googleapis.com/kdpsgroup-2c331.appspot.com/Config/KDPSWebsiteConfig.json',
+		//url: 'http://localhost:85/Config/KDPSWebsiteConfig.json',
 		method: 'GET',
 		success: function (data) {
 			  enableFlashMessage=data.enableFlashMessage;
 			  messageHeading=data.messageHeading;
 			  messageBody=data.messageBody;
+			  enableAdmissionPOPUP=data.enableAdmissionPOPUP;
+			  admissionMessage=data.admissionMessage;
 			  if (enableFlashMessage=="true") 
 			  {
 				document.getElementById("flashMessageHeading").innerHTML = messageHeading;
 				document.getElementById("flashMessageBody").src = messageBody;
 				$("#modalFlashMessage").modal();
 			  }	
+			  else if(enableAdmissionPOPUP=="true")
+			  {
+			    document.getElementById("admissionMessage").innerHTML = admissionMessage;
+				$("#modalRequest").modal();
+			  }
               else
 			  {
+			     
                  console.log('enableFlashMessage is turned off');
 			  }			  
 		},
@@ -685,6 +727,61 @@ setTimeout(function() {
 
 	});
 }, 10000);
+
+$("#submitEnquiry").click(function(){
+
+	var sStudentName=$('#enquiry_name').val()
+	var sStudentMobile=$('#enquiry_mobile').val()
+	var sStudentClass=$('#enquiry_class').val() 
+	var sStudentAddress=$('#enquiry_address').val()
+	var smessage='<B>Please find below admission enquiry details:</B><BR/>' 
+	smessage=smessage + 'name: ' + sStudentName + '<BR/> mobile: ' + sStudentMobile + '<BR/> Class: ' + sStudentClass + '<Br/> Address: ' +    sStudentAddress
+	ShowLoader();
+	$.ajax({
+		url: 'https://tgroz9ryhi.execute-api.ap-south-1.amazonaws.com/Prod/api/ContactData',
+		method: 'POST',
+		data: {
+
+			name: sStudentName ,
+			mobile: sStudentMobile,
+			email: '',
+			subject: 'Admission Enquiry',
+			toAddress: 'info.kdpsgroup@gmail.com',
+			emailbody: smessage
+		},
+		success: function () {
+		      HideLoader();
+			  window.alert('Thank you for showing interest. Soon we will call you for further assistance');
+              ClearContactTexts();
+			  $('#modalRequest').modal('hide');
+		},
+		error: function () {
+		   HideLoader();
+		   window.alert('Thank you for showing interest. Soon we will call you for further assistance');
+		   ClearContactTexts();
+		   $('#modalRequest').modal('hide');
+		}
+
+	});
+	return false;
+});
+
+function ClearContactTexts()
+{
+	  $('#enquiry_name').val('');
+	  $('#enquiry_mobile').val('');
+	  $('#enquiry_class').val('');
+	  $('#enquiry_address').val('');
+}
+function HideLoader()
+{
+  $("#pageloader").fadeOut();
+}
+
+function ShowLoader()
+{
+  $("#pageloader").fadeIn();
+}
 			   
 </script>
 		

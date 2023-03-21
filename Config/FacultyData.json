@@ -1,0 +1,93 @@
+[
+ {
+  "FacultyName": "Mrs. Poonam Agrahari",
+  "ContactNumber": 9415156598,
+  "Qualification": "M.COM,D.EL.ED, B.ED",
+  "Designation": "Principal",
+  "Address": "Jamon Amethi"
+ },
+ {
+  "FacultyName": "Miss.Ritu Agrahari",
+  "ContactNumber": 9415156598,
+  "Qualification": "B.SC.(MATHS), B.ED",
+  "Designation": "Asst. Teacher",
+  "Address": "Jamon Amethi"
+ },
+ {
+  "FacultyName": "Mrs. Neetu Agrahari",
+  "ContactNumber": 6391550005,
+  "Qualification": "D.EL.ED",
+  "Designation": "Asst. Teacher",
+  "Address": "Jamon Amethi"
+ },
+ {
+  "FacultyName": "Mr. Rajbabu Sharma",
+  "ContactNumber": 9792061243,
+  "Qualification": "D.EL.ED",
+  "Designation": "Asst. Teacher",
+  "Address": "Mathiya Bazar Jamon Amethi"
+ },
+ {
+  "FacultyName": "Mr. Vivek Yadav",
+  "ContactNumber": 7310070729,
+  "Qualification": "B.ED",
+  "Designation": "Asst. Teacher",
+  "Address": "Mathiya Bazar Jamon Amethi"
+ },
+ {
+  "FacultyName": "Miss. Nisha Yadav",
+  "ContactNumber": 9984670850,
+  "Qualification": "MA, BTC",
+  "Designation": "Asst. Teacher",
+  "Address": "Pure Raja Gaura Jamon Amethi"
+ },
+ {
+  "FacultyName": "Miss. Komal ",
+  "ContactNumber": 9026570970,
+  "Qualification": "MA",
+  "Designation": "Asst. Teacher",
+  "Address": "Jamon Amethi"
+ },
+ {
+  "FacultyName": "Miss. Usha Gupta",
+  "ContactNumber": 9140894307,
+  "Qualification": "D.EL.ED",
+  "Designation": "Asst. Teacher",
+  "Address": "Jamon Amethi"
+ },
+ {
+  "FacultyName": "Miss. Diksha Mishra",
+  "ContactNumber": 9721909683,
+  "Qualification": "D.EL.ED",
+  "Designation": "Asst. Teacher",
+  "Address": "Pure Subedar Chaube Jamon Amethi"
+ },
+ {
+  "FacultyName": "Rekha",
+  "ContactNumber": 9628116966,
+  "Qualification": "",
+  "Designation": "Peon",
+  "Address": "Pure Kandi Gaura Jamon Amethi"
+ },
+ {
+  "FacultyName": "Rita",
+  "ContactNumber": 7800873607,
+  "Qualification": "",
+  "Designation": "Peon",
+  "Address": "Pure Kandi Gaura Jamon Amethi"
+ },
+ {
+  "FacultyName": "Sohan",
+  "ContactNumber": 9628070610,
+  "Qualification": "",
+  "Designation": "Driver",
+  "Address": "Rampur Chaudhary Jamon Amethi"
+ },
+ {
+  "FacultyName": "Mohd. Wakil",
+  "ContactNumber": 9792649222,
+  "Qualification": "",
+  "Designation": "Driver",
+  "Address": "Pure Ramnewaj Gaura Amethi"
+ }
+]

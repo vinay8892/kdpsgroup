@@ -300,7 +300,7 @@ function ConstructImageDisplayFromObject()
    ImageDisplayList.forEach(function(ImageItem) {
 		var a = document.createElement('a');
 		a.setAttribute('target',"_blank");
-		a.setAttribute('href',"gallery/Index.html?ImageRef=" + ImageItem.BucketName + "&ImageDesc=" + ImageItem.DisplayName);
+		a.setAttribute('href',"gallery/index.html?ImageRef=" + ImageItem.BucketName + "&ImageDesc=" + ImageItem.DisplayName);
 		a.innerHTML = ImageItem.DisplayName;
 		document.getElementById("v-pills-whatwedo").appendChild(a);
 		document.getElementById("v-pills-whatwedo").appendChild(document.createElement("br"));

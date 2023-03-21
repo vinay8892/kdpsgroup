@@ -1,0 +1,2 @@
+* image click
+* admin panel

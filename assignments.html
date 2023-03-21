@@ -5,7 +5,10 @@
 	<link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <script>
+		let Assignments = [];
+		let AssignmentsData = [];
+	</script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
@@ -90,54 +93,16 @@
 		    		<div class="row">
 		          <div class="col-md-12 nav-link-wrap mb-5">
 		            <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-		              <a class="nav-link active" id="v-pills-whatwedo-tab" data-toggle="pill" href="#v-pills-whatwedo" role="tab" aria-controls="v-pills-whatwedo" aria-selected="true">Winter Vacation Works 2022-2023</a>
+		              <!--<a class="nav-link active" id="v-pills-whatwedo-tab" data-toggle="pill" href="#v-pills-whatwedo" role="tab" aria-controls="v-pills-whatwedo" aria-selected="true">Winter Vacation Works 2022-2023</a>-->
 
 		              <!--<a class="nav-link" id="v-pills-mission-tab" data-toggle="pill" href="#v-pills-mission" role="tab" aria-controls="v-pills-mission" aria-selected="false">Videos</a> -->
-
+                      
 		            </div>
 		          </div>
 		          <div class="col-md-12 d-flex align-items-center">
 		            
 		            <div class="tab-content ftco-animate" id="v-pills-tabContent">
 
-		              <div class="tab-pane fade show active" id="v-pills-whatwedo" role="tabpanel" aria-labelledby="v-pills-whatwedo-tab">
-		              	
-
-                      <a href="assignments/Nursery.html" target="_blank">Nursery</a>
-					  <br/>
-					  <br/>
-					  <a href="assignments/LKG_UKG.html" target="_blank">LKG/UKG</a>   
-					  <br/>
-					   <br/>
-					  <a href="assignments/class1.html" target="_blank">Class 1</a> 
-					  <br/>
-					   <br/>
-					  <a href="assignments/class2.html" target="_blank">Class 2</a> 
-					  <br/>
-					   <br/>
-					  <a href="assignments/class3.html" target="_blank">Class 3</a> 
-					  <br/>
-					   <br/>
-					  <a href="assignments/class4.html" target="_blank">Class 4</a> 
-					  <br/>
-					   <br/>
-					  <a href="assignments/class5.html" target="_blank">Class 5</a> 
-					  <br/>
-					   <br/>
-					  <a href="assignments/class6.html" target="_blank">Class 6</a> 
-					  <br/>
-					   <br/>
-					  <a href="assignments/class7.html" target="_blank">Class 7</a> 
-					  <br/>
-					   <br/>
-					  <a href="assignments/class8.html" target="_blank">Class 8</a> 					  
-		              </div>
-
-		              <div class="tab-pane fade" id="v-pills-mission" role="tabpanel" aria-labelledby="v-pills-mission-tab">
-		                <div>
-
-						</div>
-		              </div>
 
 
 		            </div>
@@ -284,9 +249,117 @@
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
   
+  <script>
+$(document).ready(function(){
+	LoadAssignmentsFromServer();
+	LoadAssignmentsDataFromServer();
+});
 
+function LoadAssignmentsFromServer(){
+        Assignments=[];
+		$.ajax({
+		url: 'https://storage.googleapis.com/kdpsgroup-2c331.appspot.com/Config/Assignment.json',
+		//url: 'http://localhost:85/Config/Assignment.json',
+		method: 'GET',
+		success: function (data) {
+			  Assignments=data;
+		      ConstructAssignmentsDisplayFromObject();
+		},
+		error: function () {
+		   console.log('Error while calling Config service');
+		}
 
- 
+	});
+}
+function CheckIfAssignmentExists(assignmentref)
+{
+   let bFound=false;
+   Assignments.forEach(function(ImageItem) {
+        if(ImageItem.AssignmentRef==assignmentref && ImageItem.Display=="1")
+		{
+			bFound=true;
+		}
+  });
+  return bFound;
+}
+
+function ConstructAssignmentsDisplayFromObject()
+{
+   let bfirstItem=true;
+   Assignments.forEach(function(ImageItem) {
+        if(ImageItem.Display=="1")
+		{
+			var a = document.createElement('a');
+			if (bfirstItem==true)
+			{
+				a.setAttribute('class',"nav-link active");
+				a.setAttribute('aria-selected',"true");
+			}
+			else
+			{
+				a.setAttribute('class',"nav-link");
+				a.setAttribute('aria-selected',"false");		
+			}
+			a.setAttribute('id','v-pills-' + ImageItem.AssignmentRef + '-tab');
+			a.setAttribute('data-toggle','pill');
+			a.setAttribute('href','#v-pills-' + ImageItem.AssignmentRef);
+			a.setAttribute('role','tab');
+			a.setAttribute('aria-controls','v-pills-' + ImageItem.AssignmentRef);
+			a.innerHTML = ImageItem.AssignmentDisplayText;
+			document.getElementById("v-pills-tab").appendChild(a);
+			
+			var div = document.createElement('Div');
+			if (bfirstItem==true)
+			{
+				div.setAttribute('class','tab-pane fade show active');
+			}
+			else
+			{
+				div.setAttribute('class','tab-pane fade');
+			}
+			div.setAttribute('id','v-pills-' + ImageItem.AssignmentRef);
+			div.setAttribute('role','tabpanel');
+			div.setAttribute('aria-labelledby','v-pills-' + ImageItem.AssignmentRef + '-tab');
+			document.getElementById("v-pills-tabContent").appendChild(div);
+			bfirstItem=false;
+		}
+  });
+}
+
+function LoadAssignmentsDataFromServer(){
+        AssignmentsData=[];
+		$.ajax({
+		url: 'https://storage.googleapis.com/kdpsgroup-2c331.appspot.com/Config/AssignmentData.json',
+		//url: 'http://localhost:85/Config/AssignmentData.json',
+		method: 'GET',
+		success: function (data) {
+			  AssignmentsData=data;
+		      ConstructAssignmentsDataDisplayFromObject();
+		},
+		error: function () {
+		   console.log('Error while calling Config service');
+		}
+
+	});
+}
+
+function ConstructAssignmentsDataDisplayFromObject()
+{
+   AssignmentsData.forEach(function(assignmentData) {
+        if (CheckIfAssignmentExists(assignmentData.AssignmentRef)==true)
+		{
+			var a = document.createElement('a');
+			a.setAttribute('target',"_blank");
+			a.setAttribute('href',"assignments/Index.html?DocRef=" + assignmentData.AssignmentRef + "&DocDesc=" + assignmentData.DisplayText);
+			a.innerHTML = assignmentData.DisplayText;
+			document.getElementById("v-pills-" + assignmentData.AssignmentRef).appendChild(a);
+			document.getElementById("v-pills-" + assignmentData.AssignmentRef).appendChild(document.createElement("br"));
+			document.getElementById("v-pills-" + assignmentData.AssignmentRef).appendChild(document.createElement("br"));
+		}
+  });
+}
+
+  </script>
    
   </body>
 </html>

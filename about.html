@@ -8,6 +8,11 @@
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
 
+    <style type="text/css">
+	 table, th, td {
+		border: 1px solid black;
+	}
+    </style>
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
     
@@ -93,7 +98,8 @@
 		              <a class="nav-link" id="v-pills-mission-tab" data-toggle="pill" href="#v-pills-mission" role="tab" aria-controls="v-pills-mission" aria-selected="false">Our mission</a>
 
 		              <a class="nav-link" id="v-pills-goal-tab" data-toggle="pill" href="#v-pills-goal" role="tab" aria-controls="v-pills-goal" aria-selected="false">Curriculum</a>
-		            </div>
+		              <a class="nav-link" id="v-pills-faculty-tab" data-toggle="pill" href="#v-pills-faculty" role="tab" aria-controls="v-pills-faculty" aria-selected="false">Our Faculty</a>
+					</div>
 		          </div>
 		          <div class="col-md-12 d-flex align-items-center">
 		            
@@ -124,6 +130,24 @@
 				            <p>In addition to the prescribed syllabus Music, Craft, Drawing, Painting, Clay Modeling, Yoga, News Paper Reading, Computer etc. has also been included in the school curriculum.</p>
 						</div>
 		              </div>
+					  
+					  <div class="tab-pane fade" id="v-pills-faculty" role="tabpanel" aria-labelledby="v-pills-faculty-tab">
+		                <div>
+			                <h2 class="mb-4">Our Well Experienced And Trained Faculties</h2>
+			              	<p>Below is the list of our faculties with their skills and degrees</p>
+                            <table id="FacultyJsonTable" style="width:100%">
+								  <tr>
+									<th>Name</th>
+									<th>Contact No</th> 
+									<th>Qualification</th>
+									<th>Designation</th>
+								  </tr>
+
+							</table>
+				        </div>
+		              </div>
+					  
+					  
 		            </div>
 		          </div>
 		        </div>
@@ -269,6 +293,42 @@
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
-    
+  <script>
+  
+    $(document).ready(function(){
+		PopulateFacultyData();
+	});
+	
+	function PopulateFacultyData(){
+	   let rowToAdd='';
+	   let faculties=[];
+	   for(var i = 1;i<FacultyJsonTable.rows.length;){
+				FacultyJsonTable.deleteRow(i);
+			}
+	   let rowData='<tr><td>@facultyName</td><td>@ContactNumber</td><td>@Qualification</td><td>@Designation</td></tr>';
+	   
+			$.ajax({
+			//url: 'https://storage.googleapis.com/kdpsgroup-2c331.appspot.com/Config/FacultyData.json',
+			url: 'http://localhost:85/Config/FacultyData.json',
+			method: 'GET',
+			success: function (data) {
+				  faculties=data;
+				  for(let filedata of faculties) 
+				  {
+					 rowToAdd=rowData.replace('@facultyName',filedata.FacultyName);
+					 rowToAdd=rowToAdd.replace('@ContactNumber',filedata.ContactNumber);
+					 rowToAdd=rowToAdd.replace('@Qualification',filedata.Qualification);
+					 rowToAdd=rowToAdd.replace('@Designation',filedata.Designation);
+					 $('#FacultyJsonTable tr:last').after(rowToAdd);
+				  }				  
+			},
+			error: function () {
+			   console.log('Error while calling Config service');
+			}
+
+		});
+		
+	}
+ </script>
   </body>
 </html>

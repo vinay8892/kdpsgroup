@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>K.D.Public School</title>
+	<link rel="icon" href="../images/favicon.png" type="image/png" sizes="16x16">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	 <script>
+		let AssignmentsData = [];
+	</script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<style type="text/css">
+#gallery {
+  padding-top: 1px;
+  @media screen and (min-width: 991px) {
+    padding: 60px 30px 0 30px;
+  }
+}
+
+.img-wrapper {
+  position: relative;
+  margin-top: 1px;
+  img {
+    width: 100%;
+  }
+}
+
+
+	</style>
+
+  </head>
+  <body>
+    
+	
+<section id="gallery">
+  <div class="container">
+    <div id="image-gallery">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 image">
+          <div class="img-wrapper" id="IMGDiv">
+           <!--<img src="class1.jpg" class="img-responsive">-->
+          </div>
+        </div>
+
+		
+      </div><!-- End row -->
+    </div><!-- End image gallery -->
+  </div><!-- End container --> 
+</section>
+	
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script> 
+
+$(document).ready(function(){
+	  var queryDict = {};
+	  location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]});
+	  var sdocRef=queryDict["DocRef"];
+	  var sDisplayText=queryDict["DocDesc"];
+	  sDisplayText=sDisplayText.replaceAll('%20',' ');
+	  LoadAssignmentsDataFromServer(sdocRef,sDisplayText);
+});
+ 
+function LoadAssignmentsDataFromServer(docRef,displaytext){
+        AssignmentsData=[];
+		$.ajax({
+		url: 'https://storage.googleapis.com/kdpsgroup-2c331.appspot.com/Config/AssignmentData.json',
+		//url: 'http://localhost:85/Config/AssignmentData.json',
+		method: 'GET',
+		success: function (data) {
+			  AssignmentsData=data;
+		      setAssignmentData(docRef,displaytext);
+		},
+		error: function () {
+		   console.log('Error while calling Config service');
+		}
+
+	});
+}
+
+function setAssignmentData(docRef,displaytext)
+{
+   AssignmentsData.forEach(function(assignmentData) {
+        if (assignmentData.AssignmentRef==docRef && assignmentData.DisplayText==displaytext)
+		{
+			var img = document.createElement('img');
+			img.setAttribute('src',assignmentData.ContentURL);
+			img.setAttribute('class',"img-responsive");
+			
+			document.getElementById("IMGDiv").appendChild(img);
+
+		}
+  });
+}
+
+</script>
+
+ 
+   
+  </body>
+</html>

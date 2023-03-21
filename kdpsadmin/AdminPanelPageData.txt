@@ -1,0 +1,239 @@
+	<div class="tab">
+	  <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'London')">Website Configs</button>
+	  <button class="tablinks" onclick="openCity(event, 'Paris')">Gallery Images</button>
+	  <button class="tablinks" onclick="openCity(event, 'Defaulters')">Gallery Videos</button>
+	  <button class="tablinks" onclick="openCity(event, 'UploadImage')">Upload Image</button>
+	  <button class="tablinks" onclick="openCity(event, 'Assignments')">Assignments</button>
+	  <button class="tablinks" onclick="openCity(event, 'Faculties')">Faculties</button>
+	</div>
+
+	<div id="London" class="tabcontent">
+	   <div class="row">
+		  <div class="col-md-12">
+			<ul id="contacts" class="list-group">
+				  <p>Please select Message POPUP Config :</p>
+				  <input type="radio" id="NoPOPUP" name="POPUPMessage" value="NoPOPUP">
+				  <label for="NoPOPUP">No POPUP</label>&nbsp;&nbsp;
+				  <input type="radio" id="FlashMessage" name="POPUPMessage" value="FlashMessage">
+				  <label for="FlashMessage">Flash Message</label>&nbsp;&nbsp;
+				  <input type="radio" id="AdmissionEnquiry" name="POPUPMessage" value="AdmissionEnquiry">
+				  <label for="AdmissionEnquiry">Admission Enquiry</label>
+				  
+				  <div id="FlshMsg">
+		
+						<div class="row">
+						<br>
+						  <div class="col-md-3">
+							   enable Flash Message
+						  </div>
+						  <div class="col-md-9">
+							  <input type="radio" id="enablePOPUP" name="enablePOPUPMsg" value="enablePOPUP">
+							  <label for="enablePOPUP">Yes</label>&nbsp;&nbsp;
+							  <input type="radio" id="disablePOPUP" name="enablePOPUPMsg" value="disablePOPUP">
+							  <label for="disablePOPUP">No</label>&nbsp;&nbsp;
+						  </div>
+						  <br>
+						  <div class="col-md-3">
+							   Message Heading
+						  </div>
+						  <div class="col-md-9">
+							  <input type="text" id="MsgHeading" name="MsgHeading" size="100">
+						  </div>
+						  <br>
+						  <div class="col-md-3">
+							   Message Body URL
+						  </div>
+						  <div class="col-md-9">
+							  <input type="text" id="MsgBody" name="MsgBody" size="100">
+						  </div>
+						  
+						</div>
+						
+				  </div>
+				  
+				  <div id="AdmssionEnqryMsg">
+		
+						<div class="row">
+						<br>
+						  <div class="col-md-3">
+							   enable admission enquiry form
+						  </div>
+						  <div class="col-md-9">
+							  <input type="radio" id="enableAdmissionEnquiry" name="enableAdmissionEnquiryForm" value="enableAdmissionEnquiry">
+							  <label for="enableAdmissionEnquiry">Yes</label>&nbsp;&nbsp;
+							  <input type="radio" id="disableAdmissionEnquiry" name="enableAdmissionEnquiryForm" value="disableAdmissionEnquiry">
+							  <label for="disableAdmissionEnquiry">No</label>&nbsp;&nbsp;
+						  </div>
+						  <br>
+						  <div class="col-md-3">
+							   Admission Message
+						  </div>
+						  <div class="col-md-9">
+							  <input type="text" id="AdmissionMsgHeading" name="AdmissionMsgHeading" size="100">
+						  </div>
+						  <br>
+						  
+						</div>
+						
+				  </div>
+				  <br/>
+				  <br/>
+				  <br/>
+				  <button type="button" id="uploadjson" onclick="CreateAndUploadJsonFile()">Update Setting</button>
+				  <button type="button" id="PreviewPOPUP" onclick="OpenPreview()">Preview</button>
+			</ul>
+		  </div>
+		</div>
+	</div>
+
+	<div id="Paris" class="tabcontent">
+		
+		<div class="row">
+		  <div class="col-md-12">
+			
+			<table id="ImageJsonTable" style="width:100%">
+				  <tr>
+					<th>Display Name</th>
+					<th>Bucket Name</th> 
+					<th>Display (1/0)</th>
+				  </tr>
+
+			</table>
+			
+			<br/>
+			<br/>
+			<br/>
+			
+			 <button type="button" id="uploadImagejson" onclick="CreateAndUploadImageGalleryJsonFile()">Update Setting</button>
+			 <button type="button" id="addRowsImageJson" onclick="AddRowsImageJson()">add Rows at last</button>
+			 <button onclick="addRowsAtSpecificIndex('ImageJsonTable');">add Row after selected row</button>
+		  </div>
+		</div>
+		
+	</div>
+
+	<div id="Defaulters" class="tabcontent">
+		
+		<div class="row">
+		  <div class="col-md-12">
+		  
+			<table id="VideoJsonTable" style="width:100%">
+				  <tr>
+					<th>Display Name</th>
+					<th>Video URL</th> 
+					<th>Display (1/0)</th>
+				  </tr>
+
+			</table>
+			
+			<br/>
+			<br/>
+			<br/>
+			
+			 <button type="button" id="uploadVideojson" onclick="CreateAndUploadVideoGalleryJsonFile()">Update Setting</button>
+			 <button type="button" id="addRowsVideoJson" onclick="AddRowsVideoJson()">add Rows at last</button>
+			 <button onclick="addRowsAtSpecificIndex('VideoJsonTable');">add Row after selected row</button>
+		  </div>
+		</div>
+		
+	</div>
+
+	<div id="UploadImage" class="tabcontent">
+		
+		<div class="row">
+		  <div class="col-md-4">
+		  
+		     Select Content Upload Type: <input type="radio" id="GalleryImageUpload" name="selectContentType" value="GalleryImages" checked onclick="loadImagebucketFolders('GalleryImage');">
+  			<label for="GalleryImageUpload">Gallery Images</label><br>
+  			<input type="radio" id="AssignmentImageUpload" name="selectContentType" value="AssignmentImages" onclick="loadImagebucketFolders('AssignmentImage');">
+  			<label for="AssignmentImageUpload">Assignment Images</label><br>
+
+			 Enter bucket Name:  <input type="text" id="txtnewbucket" Placeholder="Enter the bucket name to create"/>
+			 <button type="button" id="createNewBucket" onclick="createImageBucket()">create new bucket</button>
+			<br>
+			<br>
+			<select name="ImageFolders" id="ImageFolders" size="7">
+				<option value="PleaseSelect">Please Select</option>
+			</select>
+			<br>
+			<br>
+			<button id="listAll" onclick="selectAllImagesFromSelectedBucket();">ListAll</button>
+			<br>
+			<br>
+			 Upload Files<br />
+			<input type="file" id="files" onchange="FileChangeEvent(event)" multiple /><br /><br />
+			<button id="send" onclick="uploadImageToSelectedBucket();">Upload</button>
+			<p id="uploading"></p>
+			<progress value="0" max="100" id="progress"></progress>
+			 
+		  </div>
+		  
+		  <div class="col-md-8">
+				<table id="List">
+					<tbody>
+
+					</tbody>
+				</table>
+		  </div>
+		</div>
+		
+	</div>
+
+	<div id="Assignments" class="tabcontent">
+		
+		<div class="row">
+		  <div class="col-md-2" id="assignmentField">
+		    
+
+		  </div>
+		  <div class="col-md-10">
+			
+			<table id="AssignmentJsonTable" style="width:100%">
+				  <tr>
+					<th style="display:none;">Assignment Ref</th>
+					<th>Display Name</th> 
+					<th>URL</th>
+				  </tr>
+
+			</table>
+			
+			<br/>
+			<br/>
+			<br/>
+			 <button type="button" onclick="OpenNewAssignmentModel()">create/Remove Assignment</button>
+			 <button type="button" id="uploadAssignmentjson" onclick="createUpdateAssignmentData()">Update Setting</button>
+			 <button type="button" id="addRowsAssignmentJson" onclick="AddRowsAtLast('AssignmentJsonTable')">add Rows at last</button>
+			 <button id="btnDeleteAssignment" onclick="deleteRows();">Delete selected Rows</button>
+			 <button onclick="addRowsAtSpecificIndex('AssignmentJsonTable');">add Row after selected row</button>
+		  </div>
+		</div>
+		
+	</div>
+
+	<div id="Faculties" class="tabcontent">
+		
+		<div class="row">
+		  <div class="col-md-12">
+			
+			<table id="FacultiesJsonTable" style="width:100%">
+				  <tr>
+					<th>Name</th>
+					<th>Contact No	</th> 
+					<th>Qualification</th>
+					<th>Designation</th>
+				  </tr>
+
+			</table>
+			
+			<br/>
+			<br/>
+			<br/>
+			
+			 <button type="button" id="uploadFacultiesjson" onclick="CreateAndUploadFacultiesJsonFile()">Update Faculties</button>
+			 <button type="button" id="addRowsFacultiesJson" onclick="AddRowsFacultiesJson()">add Rows at last</button>
+			 <button id="btnDelete" onclick="deleteRows();">Delete selected Rows</button>
+			 <button onclick="addRowsAtSpecificIndex('FacultiesJsonTable');">add Row after selected row</button>
+		  </div>
+		</div>
+		
+	</div>

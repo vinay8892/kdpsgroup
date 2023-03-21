@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <style type="text/css">
+    #contacts p, 
+    #contacts p.lead{
+      margin: 0;
+    }
+    #contactsConsolidated p, 
+    #contactsConsolidated p.lead{
+      margin: 0;
+    }
+	
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.tabcontentAssignment
+{
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+table, th, td {
+  border: 1px solid black;
+}
+
+.buttonAssignment {
+width: 175px;
+}
+  </style>
+<script>  
+let bAuthenticated="false";
+</script>
+  
+</head>
+<body>
+
+<div class="container" id="bodyDiv">
+	<div class="tab">
+	  <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'London')">Website Configs</button>
+	  <button class="tablinks" onclick="openCity(event, 'Paris')">Gallery Images</button>
+	  <button class="tablinks" onclick="openCity(event, 'Defaulters')">Gallery Videos</button>
+	  <button class="tablinks" onclick="openCity(event, 'UploadImage')">Upload Image</button>
+	  <button class="tablinks" onclick="openCity(event, 'Assignments')">Assignments</button>
+	  <button class="tablinks" onclick="openCity(event, 'Faculties')">Faculties</button>
+	</div>
+
+	<div id="London" class="tabcontent">
+	   <div class="row">
+		  <div class="col-md-12">
+			<ul id="contacts" class="list-group">
+				  <p>Please select Message POPUP Config :</p>
+				  <input type="radio" id="NoPOPUP" name="POPUPMessage" value="NoPOPUP">
+				  <label for="NoPOPUP">No POPUP</label>&nbsp;&nbsp;
+				  <input type="radio" id="FlashMessage" name="POPUPMessage" value="FlashMessage">
+				  <label for="FlashMessage">Flash Message</label>&nbsp;&nbsp;
+				  <input type="radio" id="AdmissionEnquiry" name="POPUPMessage" value="AdmissionEnquiry">
+				  <label for="AdmissionEnquiry">Admission Enquiry</label>
+				  
+				  <div id="FlshMsg">
+		
+						<div class="row">
+						<br>
+						  <div class="col-md-3">
+							   enable Flash Message
+						  </div>
+						  <div class="col-md-9">
+							  <input type="radio" id="enablePOPUP" name="enablePOPUPMsg" value="enablePOPUP">
+							  <label for="enablePOPUP">Yes</label>&nbsp;&nbsp;
+							  <input type="radio" id="disablePOPUP" name="enablePOPUPMsg" value="disablePOPUP">
+							  <label for="disablePOPUP">No</label>&nbsp;&nbsp;
+						  </div>
+						  <br>
+						  <div class="col-md-3">
+							   Message Heading
+						  </div>
+						  <div class="col-md-9">
+							  <input type="text" id="MsgHeading" name="MsgHeading" size="100">
+						  </div>
+						  <br>
+						  <div class="col-md-3">
+							   Message Body URL
+						  </div>
+						  <div class="col-md-9">
+							  <input type="text" id="MsgBody" name="MsgBody" size="100">
+						  </div>
+						  
+						</div>
+						
+				  </div>
+				  
+				  <div id="AdmssionEnqryMsg">
+		
+						<div class="row">
+						<br>
+						  <div class="col-md-3">
+							   enable admission enquiry form
+						  </div>
+						  <div class="col-md-9">
+							  <input type="radio" id="enableAdmissionEnquiry" name="enableAdmissionEnquiryForm" value="enableAdmissionEnquiry">
+							  <label for="enableAdmissionEnquiry">Yes</label>&nbsp;&nbsp;
+							  <input type="radio" id="disableAdmissionEnquiry" name="enableAdmissionEnquiryForm" value="disableAdmissionEnquiry">
+							  <label for="disableAdmissionEnquiry">No</label>&nbsp;&nbsp;
+						  </div>
+						  <br>
+						  <div class="col-md-3">
+							   Admission Message
+						  </div>
+						  <div class="col-md-9">
+							  <input type="text" id="AdmissionMsgHeading" name="AdmissionMsgHeading" size="100">
+						  </div>
+						  <br>
+						  
+						</div>
+						
+				  </div>
+				  <br/>
+				  <br/>
+				  <br/>
+				  <button type="button" id="uploadjson" onclick="CreateAndUploadJsonFile()">Update Setting</button>
+				  <button type="button" id="PreviewPOPUP" onclick="OpenPreview()">Preview</button>
+			</ul>
+		  </div>
+		</div>
+	</div>
+
+	<div id="Paris" class="tabcontent">
+		
+		<div class="row">
+		  <div class="col-md-12">
+			
+			<table id="ImageJsonTable" style="width:100%">
+				  <tr>
+					<th>Display Name</th>
+					<th>Bucket Name</th> 
+					<th>Display (1/0)</th>
+				  </tr>
+
+			</table>
+			
+			<br/>
+			<br/>
+			<br/>
+			
+			 <button type="button" id="uploadImagejson" onclick="CreateAndUploadImageGalleryJsonFile()">Update Setting</button>
+			 <button type="button" id="addRowsImageJson" onclick="AddRowsImageJson()">add Rows at last</button>
+			 <button onclick="addRowsAtSpecificIndex('ImageJsonTable');">add Row after selected row</button>
+		  </div>
+		</div>
+		
+	</div>
+
+	<div id="Defaulters" class="tabcontent">
+		
+		<div class="row">
+		  <div class="col-md-12">
+		  
+			<table id="VideoJsonTable" style="width:100%">
+				  <tr>
+					<th>Display Name</th>
+					<th>Video URL</th> 
+					<th>Display (1/0)</th>
+				  </tr>
+
+			</table>
+			
+			<br/>
+			<br/>
+			<br/>
+			
+			 <button type="button" id="uploadVideojson" onclick="CreateAndUploadVideoGalleryJsonFile()">Update Setting</button>
+			 <button type="button" id="addRowsVideoJson" onclick="AddRowsVideoJson()">add Rows at last</button>
+			 <button onclick="addRowsAtSpecificIndex('VideoJsonTable');">add Row after selected row</button>
+		  </div>
+		</div>
+		
+	</div>
+
+	<div id="UploadImage" class="tabcontent">
+		
+		<div class="row">
+		  <div class="col-md-4">
+		  
+		     Select Content Upload Type: <input type="radio" id="GalleryImageUpload" name="selectContentType" value="GalleryImages" checked onclick="loadImagebucketFolders('GalleryImage');">
+  			<label for="GalleryImageUpload">Gallery Images</label><br>
+  			<input type="radio" id="AssignmentImageUpload" name="selectContentType" value="AssignmentImages" onclick="loadImagebucketFolders('AssignmentImage');">
+  			<label for="AssignmentImageUpload">Assignment Images</label><br>
+
+			 Enter bucket Name:  <input type="text" id="txtnewbucket" Placeholder="Enter the bucket name to create"/>
+			 <button type="button" id="createNewBucket" onclick="createImageBucket()">create new bucket</button>
+			<br>
+			<br>
+			<select name="ImageFolders" id="ImageFolders" size="7">
+				<option value="PleaseSelect">Please Select</option>
+			</select>
+			<br>
+			<br>
+			<button id="listAll" onclick="selectAllImagesFromSelectedBucket();">ListAll</button>
+			<br>
+			<br>
+			 Upload Files<br />
+			<input type="file" id="files" onchange="FileChangeEvent(event)" multiple /><br /><br />
+			<button id="send" onclick="uploadImageToSelectedBucket();">Upload</button>
+			<p id="uploading"></p>
+			<progress value="0" max="100" id="progress"></progress>
+			 
+		  </div>
+		  
+		  <div class="col-md-8">
+				<table id="List">
+					<tbody>
+
+					</tbody>
+				</table>
+		  </div>
+		</div>
+		
+	</div>
+
+	<div id="Assignments" class="tabcontent">
+		
+		<div class="row">
+		  <div class="col-md-2" id="assignmentField">
+		    
+
+		  </div>
+		  <div class="col-md-10">
+			
+			<table id="AssignmentJsonTable" style="width:100%">
+				  <tr>
+					<th style="display:none;">Assignment Ref</th>
+					<th>Display Name</th> 
+					<th>URL</th>
+				  </tr>
+
+			</table>
+			
+			<br/>
+			<br/>
+			<br/>
+			 <button type="button" onclick="OpenNewAssignmentModel()">create/Remove Assignment</button>
+			 <button type="button" id="uploadAssignmentjson" onclick="createUpdateAssignmentData()">Update Setting</button>
+			 <button type="button" id="addRowsAssignmentJson" onclick="AddRowsAtLast('AssignmentJsonTable')">add Rows at last</button>
+			 <button id="btnDeleteAssignment" onclick="deleteRows();">Delete selected Rows</button>
+			 <button onclick="addRowsAtSpecificIndex('AssignmentJsonTable');">add Row after selected row</button>
+		  </div>
+		</div>
+		
+	</div>
+
+	<div id="Faculties" class="tabcontent">
+		
+		<div class="row">
+		  <div class="col-md-12">
+			
+			<table id="FacultiesJsonTable" style="width:100%">
+				  <tr>
+					<th>Name</th>
+					<th>Contact No	</th> 
+					<th>Qualification</th>
+					<th>Designation</th>
+				  </tr>
+
+			</table>
+			
+			<br/>
+			<br/>
+			<br/>
+			
+			 <button type="button" id="uploadFacultiesjson" onclick="CreateAndUploadFacultiesJsonFile()">Update Faculties</button>
+			 <button type="button" id="addRowsFacultiesJson" onclick="AddRowsFacultiesJson()">add Rows at last</button>
+			 <button id="btnDelete" onclick="deleteRows();">Delete selected Rows</button>
+			 <button onclick="addRowsAtSpecificIndex('FacultiesJsonTable');">add Row after selected row</button>
+		  </div>
+		</div>
+		
+	</div>
+  
+</div>
+
+<div style="margin-top: 75px;margin-left: 10%;margin-right: 10%;" class="modal fade" id="modalFlashMessage" tabindex="-1" role="dialog" aria-labelledby="modalRequestLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div style="background-color:Tomato;" class="modal-header" >
+          <!--<h5 class="modal-title" id="modalRequestLabel"><span style="color:blue;font-size:25px;font-weight:bold">Winter Vacation Notice</span></h5>-->
+		  <h5 class="modal-title" id="modalRequestLabel"><span id="flashMessageHeading" style="color:blue;font-size:25px;font-weight:bold">Best Wishes</span></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+		    <div class="row">
+		    <div class="col-lg-12 col-md-12 col-sm-12">
+			<!--<img style="max-width: 100%;height: auto;" src="images/WinterVacation.jpg" class="img-responsive">-->
+			<img id="flashMessageBody" style="max-width: 100%;height: auto;" src="images/loc.png" class="img-responsive">
+			</div>
+			</div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+   
+<div style="margin-top: 75px;margin-left: 10%;margin-right: 10%;" class="modal fade" id="modalCreateRemoveAssignment" tabindex="-1" role="dialog" aria-labelledby="modalRequestLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div style="background-color:Tomato;" class="modal-header" >
+          <!--<h5 class="modal-title" id="modalRequestLabel"><span style="color:blue;font-size:25px;font-weight:bold">Winter Vacation Notice</span></h5>-->
+		  <h5 class="modal-title" id="modalRequestLabel"><span id="flashMessageHeading" style="color:blue;font-size:25px;font-weight:bold">Create/Remove/Disable Assignments</span></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+		    <div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="tab">
+						  <button class="tabAssignment" onclick="OpenAssignmentTab(event, 'CreateAssignmnt')">Create Assignment</button>
+						  <button class="tabAssignment" onclick="OpenAssignmentTab(event, 'RemoveAssignmnt')">Remove/Disable Assignment</button>
+						</div>
+						<div id="CreateAssignmnt" class="tabcontentAssignment">
+							
+							<div class="row">
+							  <div class="col-md-12">
+								  Enter Assignment Name:  <input type="text" id="txtcreateNewAssignment" Placeholder="Enter the Assignment name to create"/>
+								 <button type="button" id="createNewAssignment" onclick="createNewAssignment()">create new Assignment</button>
+
+							  </div>
+							</div>
+							
+						</div>
+						<div id="RemoveAssignmnt" class="tabcontentAssignment">
+							
+							<div class="row">
+							  <div class="col-md-12">
+								
+								<table id="AssignmentsTable" style="width:100%">
+									  <tr>
+										<th>Assignment Ref</th>
+										<th>Assignment Name</th> 
+										<th>Display (1/0)</th>
+										<th>Selection</th>
+									  </tr>
+
+								</table>
+								
+								<br/>
+								<br/>
+								<br/>
+								
+								 <button type="button" id="disableSelectedAssignment" onclick="DisableSelectedAssignment()">Disable selected Assignments</button>
+								 <button type="button" id="removeSelectedAssignment" onclick="DisableSelectedAssignment(true)">Remove selected Assignments</button>
+							  </div>
+							</div>
+							
+						</div>
+				</div>
+			</div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+   
+  <div class="modal fade" id="modalRequest" tabindex="-1" role="dialog" aria-labelledby="modalRequestLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" style="color:blue;" id="modalRequestLabel">Admission Enquiry</h2>	  
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+		  <h5 id="admissionMessage" style="color:orange;">Admission is open. Please fill below form to get call back to answer your queries</h5>
+          <form action="#">
+            <div class="form-group">
+              <!-- <label for="Appointment_name" class="text-black">Full Name</label> -->
+              <input type="text" class="form-control" id="enquiry_name" placeholder="Full Name">
+            </div>
+            <div class="form-group">
+              <!-- <label for="Appointment_email" class="text-black">Email</label> -->
+              <input type="text" class="form-control" id="enquiry_mobile" placeholder="Contact No">
+            </div>
+			<div class="form-group">
+              <!-- <label for="Appointment_email" class="text-black">Email</label> -->
+              <input type="text" class="form-control" id="enquiry_class" placeholder="class">
+            </div>
+			
+			<div class="form-group">
+              <!-- <label for="Appointment_message" class="text-black">Message</label> -->
+              <textarea name="" id="enquiry_address" class="form-control" cols="30" rows="3" placeholder="Address"></textarea>
+            </div>
+
+            <div class="form-group">
+              <input type="submit" id="submitEnquiry" value="Make an Enquiry" class="btn btn-primary">
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="" checked>Remember me</label>
+            </div>
+              <button type="button" id="btnlogin" class="btn btn-success btn-block" href="#"><span class="glyphicon glyphicon-off"></span> Login</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- Latest compiled and minified Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <!-- Include Firebase Library -->
+  <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
+  <!-- Include Firebase Library End-->
+  <script src="script.js"></script>
+  <script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  bImageUploadTabClicked=false;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+  if(cityName=="Paris")
+  {
+    PopulateImageFileData();
+  }
+  else if(cityName=="Defaulters")
+  {
+     PopulateVideoFileData();
+  }
+  else if (cityName=="UploadImage")
+  {
+     bImageUploadTabClicked=true;
+     loadImagebucketFolders();
+  }
+  else if (cityName=="Assignments")
+  {
+	 PopulateAssignmentField();
+  }
+  else if (cityName=="Faculties")
+  {
+	 PopulateFacultiesData();
+  }
+}
+if (bAuthenticated=="true")
+{
+	document.getElementById("defaultOpen").click();
+}
+
+function OpenAssignmentTab(evt, tabDisplayName)
+{
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontentAssignment");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tabAssignment");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabDisplayName).style.display = "block";
+  evt.currentTarget.className += " active";
+
+  if(tabDisplayName=="RemoveAssignmnt")
+  {
+     PopulateAssignmentModal();
+  }
+}
+</script>
+</body>
+</html>

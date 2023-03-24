@@ -138,7 +138,6 @@
                             <table id="FacultyJsonTable" style="width:100%">
 								  <tr>
 									<th>Name</th>
-									<th>Contact No</th> 
 									<th>Qualification</th>
 									<th>Designation</th>
 								  </tr>
@@ -305,7 +304,7 @@
 	   for(var i = 1;i<FacultyJsonTable.rows.length;){
 				FacultyJsonTable.deleteRow(i);
 			}
-	   let rowData='<tr><td>@facultyName</td><td>@ContactNumber</td><td>@Qualification</td><td>@Designation</td></tr>';
+	   let rowData='<tr><td>@facultyName</td><td>@Qualification</td><td>@Designation</td></tr>';
 	   
 			$.ajax({
 			url: 'https://storage.googleapis.com/kdpsgroup-2c331.appspot.com/Config/FacultyData.json',
@@ -316,7 +315,6 @@
 				  for(let filedata of faculties) 
 				  {
 					 rowToAdd=rowData.replace('@facultyName',filedata.FacultyName);
-					 rowToAdd=rowToAdd.replace('@ContactNumber',filedata.ContactNumber);
 					 rowToAdd=rowToAdd.replace('@Qualification',filedata.Qualification);
 					 rowToAdd=rowToAdd.replace('@Designation',filedata.Designation);
 					 $('#FacultyJsonTable tr:last').after(rowToAdd);

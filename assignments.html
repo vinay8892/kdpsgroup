@@ -350,7 +350,7 @@ function ConstructAssignmentsDataDisplayFromObject()
 		{
 			var a = document.createElement('a');
 			a.setAttribute('target',"_blank");
-			a.setAttribute('href',"assignments/Index.html?DocRef=" + assignmentData.AssignmentRef + "&DocDesc=" + assignmentData.DisplayText);
+			a.setAttribute('href',"assignments/index.html?DocRef=" + assignmentData.AssignmentRef + "&DocDesc=" + assignmentData.DisplayText);
 			a.innerHTML = assignmentData.DisplayText;
 			document.getElementById("v-pills-" + assignmentData.AssignmentRef).appendChild(a);
 			document.getElementById("v-pills-" + assignmentData.AssignmentRef).appendChild(document.createElement("br"));

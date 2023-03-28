@@ -29,7 +29,36 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
 
+	nav ul ul {
+    display: none;
+    position: absolute;
+}
+
+nav ul li:hover > ul {
+    display: inherit;
+}
+
+nav ul ul li{
+    width: 170px;
+    position: relative;
+    float: none;
+    display: block;
+	background-color: rgba(0, 0, 0, 0.4);
+	/*background-color: lightgray;*/
+}
+
+nav ul ul li a {
+	color: red;
+	font-weight:bold;
+}
+
+li > a::after { content: ‘ +’;}
+li > a:only-child::after {
+    content: ”;
+}
+    </style>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?v=1.0" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -46,15 +75,24 @@
               <img style="height:90px;width:90px;float: left;" src="images/logo.png" alt="K.D.Public School">
 			  <div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-				  <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-				  <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-				  <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-				  <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-				  <li class="nav-item"><a href="payment/index.html" class="nav-link">Fees Payment</a></li>
-				  <li class="nav-item"><a href="assignments.html" class="nav-link">Assignments</a></li>
+				  <li class="nav-item active"><a href="index.html" class="nav-link" style="color:red;font-weight:bold">Home</a></li>
+				  <li class="nav-item"><a href="about.html" class="nav-link" style="color:red;font-weight:bold">About</a></li>
+				  <li class="nav-item"><a href="gallery.html" class="nav-link" style="color:red;font-weight:bold">Gallery</a></li>
+				  <li class="nav-item"><a href="contact.html" class="nav-link" style="color:red;font-weight:bold">Contact</a></li>
+				  <li class="nav-item"><a href="payment/index.html" class="nav-link" style="color:red;font-weight:bold">Fees Payment</a></li>
+				  <li class="nav-item"><a href="" class="nav-link" style="color:red;font-weight:bold">Academics</a>
+					  <ul>
+						<li><a href="houseSystem.html" >House System</a></li>
+						<li><a href="feeStructure.html" >Fee Structure</a></li>
+						<li><a href="Config/FeeStructure.docx" >Download Teachers Reg Form</a></li>
+						<li><a href="assignments.html" >Assignments</a></li>
+					  </ul>				  
+				  </li>
 				 <!-- <li class="nav-item cta"><a href="contact.html" class="nav-link" data-toggle="modal" data-target="#modalRequest"><span>Make an Enquiry</span></a></li>-->
 				</ul>
-				
+												</br>
+				</br>
+				</br>
 				<ul class="navbar-nav navbar-right">
 				     &nbsp;&nbsp;&nbsp;&nbsp;
 					<li><a href="#"><span style="color:blue;font-size:20px;"><i class="fa fa-phone"></i></span><span style="color:red;font-size:20px;"><B>+91 9792866866</B></span></a></li>
@@ -74,7 +112,7 @@
         <div class="container" data-scrollax-parent="true">
           <div class="row slider-text align-items-end">
             <div class="col-md-7 col-sm-12 ftco-animate mb-5">
-              <p class="breadcrumbs" data-scrollax=" properties: { translateY: '70%', opacity: 1.6}"><span class="mr-2"><a href="index.html">Home</a></span> <span>Gallery</span></p>
+              <p class="breadcrumbs" data-scrollax=" properties: { translateY: '70%', opacity: 1.6}"><span class="mr-2"><a href="index.html">Home</a></span> <span>Assignments</span></p>
               <h1 class="mb-3" data-scrollax=" properties: { translateY: '70%', opacity: .9}">Assignments</h1>
             </div>
           </div>

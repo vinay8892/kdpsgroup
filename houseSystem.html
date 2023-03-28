@@ -12,6 +12,33 @@
 	 table, th, td {
 		border: 1px solid black;
 	}
+	nav ul ul {
+    display: none;
+    position: absolute;
+}
+
+nav ul li:hover > ul {
+    display: inherit;
+}
+
+nav ul ul li{
+    width: 170px;
+    position: relative;
+    float: none;
+    display: block;
+	background-color: rgba(0, 0, 0, 0.4);
+	/*background-color: lightgray;*/
+}
+
+nav ul ul li a {
+	color: red;
+	font-weight:bold;
+}
+
+li > a::after { content: ‘ +’;}
+li > a:only-child::after {
+    content: ”;
+}
     </style>
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -48,15 +75,24 @@
               <img style="height:90px;width:90px;float: left;" src="images/logo.png" alt="K.D.Public School">
 			  <div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-				  <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-				  <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-				  <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-				  <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-				  <li class="nav-item"><a href="payment/index.html" class="nav-link">Fees Payment</a></li>
-				  <li class="nav-item"><a href="assignments.html" class="nav-link">Assignments</a></li>
+				  <li class="nav-item active"><a href="index.html" class="nav-link" style="color:red;font-weight:bold">Home</a></li>
+				  <li class="nav-item"><a href="about.html" class="nav-link" style="color:red;font-weight:bold">About</a></li>
+				  <li class="nav-item"><a href="gallery.html" class="nav-link" style="color:red;font-weight:bold">Gallery</a></li>
+				  <li class="nav-item"><a href="contact.html" class="nav-link" style="color:red;font-weight:bold">Contact</a></li>
+				  <li class="nav-item"><a href="payment/index.html" class="nav-link" style="color:red;font-weight:bold">Fees Payment</a></li>
+				  				  <li class="nav-item"><a href="" class="nav-link" style="color:red;font-weight:bold">Academics</a>
+					  <ul>
+						<li><a href="houseSystem.html" >House System</a></li>
+						<li><a href="feeStructure.html" >Fee Structure</a></li>
+						<li><a href="Config/FeeStructure.docx" >Download Teachers Reg Form</a></li>
+						<li><a href="assignments.html" >Assignments</a></li>
+					  </ul>				  
+				  </li>
 				  <!--<li class="nav-item cta"><a href="contact.html" class="nav-link" data-toggle="modal" data-target="#modalRequest"><span>Make an Enquiry</span></a></li>-->
 				</ul>
-				
+								</br>
+				</br>
+				</br>
 				<ul class="navbar-nav navbar-right">
 				     &nbsp;&nbsp;&nbsp;&nbsp;
 					<li><a href="#"><span style="color:blue;font-size:20px;"><i class="fa fa-phone"></i></span><span style="color:red;font-size:20px;"><B>+91 9792866866</B></span></a></li>
@@ -131,17 +167,7 @@
 								<td>Be Responsible</td>
 							  </tr>							  
 							</table>
-							</br>
-							<ul>
-								<li>Fee once paid is not refundable.</li>
-								<li>The school will not be responsible for refund/adjustment of any money which has not been actually credited to the school account, owing to failed transactions. </li>
-								<li>Fees must be paid by the prescribed dates. </li>
-								<li>Fee is charged in instalments month wise as given in the fee card.</li>
-								<li>All dues are to be paid in advance up to the 10th of every month. </li>
-								<li>The Managing Body of the school reserve the right to add/amend/waive off any of the rules and regulations contained in the school website without assigning any reason thereof.</li>
-								<li>The interpretation of any of the rules as contained in the website rests solely and entirely with the Managing Body of the School. Its interpretation shall be final and binding on Parents/Guardians and students of the school. </li>
-								<li>All disputes are subjected to Amethi Jurisdiction only. </li>
-							</ul> 
+
 						</div>
 		    </div>
     	</div>

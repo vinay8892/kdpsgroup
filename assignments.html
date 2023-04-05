@@ -40,6 +40,10 @@ nav ul li:hover > ul {
     display: inherit;
 }
 
+nav ul li:focus > ul {
+    display: block;
+}
+
 nav ul ul li{
     width: 170px;
     position: relative;
@@ -80,7 +84,7 @@ li > a:only-child::after {
 				  <li class="nav-item"><a href="gallery.html" class="nav-link" style="color:red;font-weight:bold">Gallery</a></li>
 				  <li class="nav-item"><a href="contact.html" class="nav-link" style="color:red;font-weight:bold">Contact</a></li>
 				  <li class="nav-item"><a href="payment/index.html" class="nav-link" style="color:red;font-weight:bold">Fees Payment</a></li>
-				  <li class="nav-item"><a href="" class="nav-link" style="color:red;font-weight:bold">Academics</a>
+				  <li class="nav-item" tabindex="0"><a href="javascript:void(0);" class="nav-link" style="color:red;font-weight:bold">Academics</a>
 					  <ul>
 						<li><a href="houseSystem.html" >House System</a></li>
 						<li><a href="feeStructure.html" >Fee Structure</a></li>
